@@ -50,28 +50,24 @@ body {
 
 </style>
 </head>
-<body>
+<body class="bg-slate-100">
 	
 	<%@ include file="../header.jsp" %>
 	
 	<div class="container">
 	<div class="row">
-	    <div class="col-sm-*">
+	      <div class="col-sm-*">
 			<!-- sidenavbar -->
 			<%@page import="com.project.entity.Login" %>
 			<%@page import="org.springframework.web.servlet.ModelAndView" %>
 			<% Login l=(Login)session.getAttribute("userInfo");	 %>
-			<div class="sidenav">
-				<a><br/><br/>
-				<div style="background-color: rgba(255,0,0,0.4);">&nbsp;&nbsp;&nbsp;
-					<span class="badge badge-pill badge-warning">&nbsp;&nbsp;<%= l.getRole().toUpperCase() %>&nbsp;&nbsp;</span><br/><br/>
-					<b>Username:</b> <%= l.getUsername() %><br/><br/>
-					<b>Id:</b> <%= l.getId() %><br/>
-					<a href="editView.html">
-			    	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="text-decoration:underline; color:green;">edit...</span>
-			    	</a>
+			<div class="sidenav border border-slate-700 flex flex-col justify-between">
+				
+				<div class="mx-2">
+					<h2 class="font-extrabold mb-2 ">SVSS</h2>
+					<span class="inline-block w-full text-white bg-purple-700 hover:bg-purple-800 font-medium rounded-md text-sm p-2.5 text-center my-1"><%= l.getRole().toUpperCase() %></span>
 				</div>
-				</a><br/>
+			
 				
 		<% if(!l.getId().equals("EMP100")){ %>
 				<a href="personalInfo.html">
@@ -79,27 +75,77 @@ body {
 				</a>
 		<%} %>
 		<% if(l.getRole().equals("administrator")){ %>
-			    <a href="addEmployeeView.html">
-			    	<span class="text-warning">&nbsp;&nbsp;&nbsp;&nbsp;>&nbsp;&nbsp;Add Employee</span>
+			<div class="flex-grow text-xs mt-4">
+			    <a href="addEmployeeView.html" class="text-violet-800 flex gap-x-2 inline-block text-slate-700 font-semibold hover:underline" style="font-size:16px;font-weight:600">
+			    	> <span>Add Employee</span>
 			    </a>
-				<a href="searchEmployeeView.html">
-					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Search Employee
+				<a href="searchEmployeeView.html" class="text-slate-700 font-semibold"  style="font-size:16px;font-weight:600">
+					Search Employee
 				</a>
-				<a href="allEmployeesView.html">
-					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;All Employees
+				<a href="allEmployeesView.html" class="text-slate-700 font-semibold"  style="font-size:16px;font-weight:600">
+					All Employees
+				</a>
+			</div>
+		<%} %>
+		
+		<% if(l.getRole().equals("receptionist")){ %>
+		<div class="flex-grow">
+				<a href="addPatientView.html" class="text-slate-700 text-sm font-semibold">
+					Add Patient
+				</a>
+				<a href="searchPatientView.html" class="text-slate-700 text-sm font-semibold">
+					Search Patient
+				</a>
+				<a href="opdQueueView.html" class="text-slate-700 text-sm font-semibold">
+					OPD Queue
+				</a>
+				<a href="prescriptionQueueView.html"  class="text-slate-700 text-sm font-semibold">
+					<% String count=""+request.getAttribute("prescriptionsCount"); %>
+					Prescriptions 
+					<span class="badge badge-pill badge-danger"><%=count %></span>
+				</a>
+		</div>
+		<%} %>
+		
+		<% if(l.getRole().equals("doctor")){ %>
+				<a href="opdQueueD.html">
+				OPD Queue
+				</a>
+				<a href="searchPatientView.html">
+					Search Patient
+				</a>
+				<a class="text-primary">
+				Patient General Info
+				</a>
+				<a class="text-primary">
+				History
+				</a>
+				<a class="text-primary">
+				Observations &
+				Prescription
 				</a>
 		<%} %>
+		
+				<div class="p-2 flex flex-col font-medium text-slate-800 rounded-md bg-white border-blue-400 m-2">
+					<span><%= l.getUsername() %></span>
+					<span><%= l.getId() %></span>
+					<a href="editView.html" class="text-right">
+						<span  class="text-violet-900 text-sm no-underline font-medium">EDIT</span>
+					</a>
+				</div>
 			</div>
 	    </div>
 	    
+	    
 	    <div class="col-sm-12">
 	      <!-- display window -->
-			<div class="main"><br/><br/>
-			<h1>Add New Employee</h1>
+			<div class="main"><br/>
+				<h2 class="font-extrabold text-3xl">Add New Employee</h2>
+		
 				<div class="container grey">
 				<form name="addEmp" action="addEmployee.html" method="post" >
 				 <div class="form-group"><br/>
-			      <label>Name</label>
+			      <label class="font-medium text-slate-700">Name</label>
 			        <div class="row">
 			        <div class="col-sm-4">
 			        <input type="text" class="form-control" id="exampleInputEmail1" name="firstName" placeholder="First Name"
@@ -116,13 +162,13 @@ body {
 			    </div>
 			
 			     <div class="form-group"><br/>
-			      <label>Birthdate</label>
+			       <label class="font-medium text-slate-700">Birthdate</label>
 			      <input type="date" class="form-control" id="exampleInputEmail1" name="birthdate" placeholder="Choose BirthDate"
 			        required="required" max="2020-03-14">
 			    </div>
 			
 			    <div class="form-group">
-			      <label>Gender</label>
+			       <label class="font-medium text-slate-700">Gender</label>
 			      <select class="form-control" id="exampleSelect1" name="gender">
 			        <option value="female">Female</option>
 			        <option value="male">Male</option>
@@ -131,55 +177,55 @@ body {
 			    </div>
 			
 			     <div class="form-group">
-			      <label>Email address</label>
+			       <label class="font-medium text-slate-700">Email address</label>
 			      <input type="email" class="form-control" id="exampleInputEmail1" name="email" placeholder="Enter Email"
 			        required="required" autocomplete="off" maxlength="30">
 			    </div>
 			
 			     <div class="form-group">
-			      <label>Mobile No</label>
+			       <label class="font-medium text-slate-700">Mobile No</label>
 			      <input type="text" class="form-control" id="exampleInputEmail1" name="mobileNo" placeholder="Enter Mobile No"
 			        required="required" autocomplete="off" minlength="10" maxlength="10">
 			    </div>
 			
 			     <div class="form-group">
-			      <label>Adhar No</label>
+			       <label class="font-medium text-slate-700">Adhar No</label>
 			      <input type="text" class="form-control" id="exampleInputEmail1" name="adharNo" placeholder="Enter Adhar No"
 			        required="required" autocomplete="off" minlength="12" maxlength="12">
 			    </div>
 			
 			     <div class="form-group">
-			      <label>Country</label>
+			      <label class="font-medium text-slate-700">Country</label>
 			      <input type="text" class="form-control" id="exampleInputEmail1" name="country" placeholder="Enter Country"
 			        required="required" autocomplete="off" maxlength="20">
 			    </div>
 			
 			     <div class="form-group">
-			      <label>State</label>
+			       <label class="font-medium text-slate-700">State</label>
 			      <input type="text" class="form-control" id="exampleInputEmail1" name="state" placeholder="Enter State"
 			        required="required" autocomplete="off" maxlength="20">
 			    </div>
 			
 			    <div class="form-group">
-			      <label>City</label>
+			       <label class="font-medium text-slate-700">City</label>
 			      <input type="text" class="form-control" id="exampleInputEmail1" name="city" placeholder="Enter City"
 			        required="required" autocomplete="off" maxlength="20">
 			    </div>
 			
 			     <div class="form-group">
-			      <label>Residential Address</label>
+			       <label class="font-medium text-slate-700">Residential Address</label>
 			      <textarea class="form-control" id="exampleTextarea" rows="2" name="residentialAddress"
 			        required="required" autocomplete="off" maxlength="100"></textarea>
 			    </div>
 			
 			     <div class="form-group">
-			      <label>Permanent Address</label>
+			       <label class="font-medium text-slate-700">Permanent Address</label>
 			      <textarea class="form-control" id="exampleTextarea" rows="2"  name="permanentAddress"
 			        required="required" autocomplete="off" maxlength="100"></textarea>
 			    </div>
 			
 			    <div class="form-group">
-			      <label>Role</label>
+			       <label class="font-medium text-slate-700">Role</label>
 			      <select class="form-control" id="exampleSelect1" name="role">
 			          <option value="doctor">Doctor</option>
 			          <option value="receptionist">Receptionist</option>
@@ -188,20 +234,19 @@ body {
 			    </div>
 			
 			    <div class="form-group">
-			      <label>Qualification</label>
+			       <label class="font-medium text-slate-700">Qualification</label>
 			      <input type="text" class="form-control" id="exampleInputEmail1" name="qualification" placeholder="Enter Qualification"
 			        required="required" autocomplete="off" maxlength="50">
 			    </div>
 			
 			    <div class="form-group">
-			      <label>Specialization</label>
+			       <label class="font-medium text-slate-700">Specialization</label>
 			      <input type="text" class="form-control" id="exampleInputEmail1" name="specialization" placeholder="Enter Specialization"
 			        required="required" autocomplete="off" maxlength="50">
 			    </div>
-			    <div  style="text-align:center;">
-				    <button type="submit" class="btn btn-primary">Submit</button>
-				    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-				    <button type="reset" class="btn btn-danger">Clear</button>
+			    <div class="mt-2">
+				    <button type="submit" class="font-semibold w-40 rounded text-white bg-violet-600 hover:bg-violet-900 h-10">Submit</button>
+				    <button type="reset" class="font-semibold w-40 rounded text-white bg-rose-600 hover:bg-rose-900 h-10">Clear</button>
 			    </div>
 			     
 			</div><br/><br/>

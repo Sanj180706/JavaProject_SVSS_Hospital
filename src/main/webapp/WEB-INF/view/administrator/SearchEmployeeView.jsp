@@ -58,22 +58,18 @@ body {
 	
 	<div class="container">
 	<div class="row">
-	    <div class="col-sm-*">
+ <div class="col-sm-*">
 			<!-- sidenavbar -->
 			<%@page import="com.project.entity.Login" %>
 			<%@page import="org.springframework.web.servlet.ModelAndView" %>
 			<% Login l=(Login)session.getAttribute("userInfo");	 %>
-			<div class="sidenav">
-				<a><br/><br/>
-				<div style="background-color: rgba(255,0,0,0.4);">&nbsp;&nbsp;&nbsp;
-					<span class="badge badge-pill badge-warning">&nbsp;&nbsp;<%= l.getRole().toUpperCase() %>&nbsp;&nbsp;</span><br/><br/>
-					<b>Username:</b> <%= l.getUsername() %><br/><br/>
-					<b>Id:</b> <%= l.getId() %><br/>
-					<a href="editView.html">
-			    	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="text-decoration:underline; color:green;">edit...</span>
-			    	</a>
+			<div class="sidenav border border-slate-700 flex flex-col justify-between">
+				
+				<div class="mx-2">
+					<h2 class="font-extrabold mb-2 ">SVSS</h2>
+					<span class="inline-block w-full text-white bg-purple-700 hover:bg-purple-800 font-medium rounded-md text-sm p-2.5 text-center my-1"><%= l.getRole().toUpperCase() %></span>
 				</div>
-				</a><br/>
+			
 				
 		<% if(!l.getId().equals("EMP100")){ %>
 				<a href="personalInfo.html">
@@ -81,24 +77,72 @@ body {
 				</a>
 		<%} %>
 		<% if(l.getRole().equals("administrator")){ %>
-			    <a href="addEmployeeView.html">
-			    	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Add Employee
+			<div class="flex-grow text-xs mt-4">
+			    <a href="addEmployeeView.html" class="text-violet-800 flex gap-x-2 inline-block text-slate-700 font-semibold hover:underline" style="font-size:16px;font-weight:600">
+			    	<span>Add Employee</span>
 			    </a>
-				<a href="searchEmployeeView.html">
-					<span class="text-warning">&nbsp;&nbsp;&nbsp;&nbsp;>&nbsp;&nbsp;Search Employee</span>
+				<a href="searchEmployeeView.html" class="text-slate-700 font-semibold"  style="font-size:16px;font-weight:600">
+					<span>Search Employee</span>
 				</a>
-				<a href="allEmployeesView.html">
-					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;All Employees
+				<a href="allEmployeesView.html" class="text-violet-800 font-semibold"  style="font-size:16px;font-weight:600">
+					> <span>All Employees</span>
+				</a>
+			</div>
+		<%} %>
+		
+		<% if(l.getRole().equals("receptionist")){ %>
+		<div class="flex-grow">
+				<a href="addPatientView.html" class="text-slate-700 text-sm font-semibold">
+					Add Patient
+				</a>
+				<a href="searchPatientView.html" class="text-slate-700 text-sm font-semibold">
+					Search Patient
+				</a>
+				<a href="opdQueueView.html" class="text-slate-700 text-sm font-semibold">
+					OPD Queue
+				</a>
+				<a href="prescriptionQueueView.html"  class="text-slate-700 text-sm font-semibold">
+					<% String count=""+request.getAttribute("prescriptionsCount"); %>
+					Prescriptions 
+					<span class="badge badge-pill badge-danger"><%=count %></span>
+				</a>
+		</div>
+		<%} %>
+		
+		<% if(l.getRole().equals("doctor")){ %>
+				<a href="opdQueueD.html">
+				OPD Queue
+				</a>
+				<a href="searchPatientView.html">
+					Search Patient
+				</a>
+				<a class="text-primary">
+				Patient General Info
+				</a>
+				<a class="text-primary">
+				History
+				</a>
+				<a class="text-primary">
+				Observations &
+				Prescription
 				</a>
 		<%} %>
 		
+				<div class="p-2 flex flex-col font-medium text-slate-800 rounded-md bg-white border-blue-400 m-2">
+					<span><%= l.getUsername() %></span>
+					<span><%= l.getId() %></span>
+					<a href="editView.html" class="text-right">
+						<span  class="text-violet-900 text-sm no-underline font-medium">EDIT</span>
+					</a>
+				</div>
 			</div>
 	    </div>
 	    
 	   <div class="col-sm-12">
 	      <!-- display window -->
-			<div class="main"><br/><br/>
-			<h1>Search Existing Employee</h1></br>
+			<div class="main">
+			<h2 class="font-extrabold text-3xl mb-4">Search Existing Employee</h2>
+			
 			 		<%	
 					try{
 						String status=(request.getAttribute("status")).toString();

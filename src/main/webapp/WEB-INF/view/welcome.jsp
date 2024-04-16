@@ -144,7 +144,7 @@ body {
 					 Hospital Dashboard 
 				</h1>
 				<h2 class="font-extrabold text-3xl">Welcome <%=l.getUsername() %> </h2>
-				</div>
+			</div>
 		
 		<%@page import="java.util.List" %>		
 		<% if(l.getRole().equals("administrator")){ 
