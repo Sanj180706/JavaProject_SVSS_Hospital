@@ -11,7 +11,7 @@
 		  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 		  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
 		  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
-		  
+		   <script src="https://cdn.tailwindcss.com"></script>
 <style>
 
 <!-- sidenavbar -->
@@ -134,7 +134,8 @@ body {
 				<h1><div style="text-align:center;">
 					Welcome <span style="color: orange;"><%=l.getUsername() %> </span>! <br/>
 					 Let's Get Started !
-				</div></h1>
+				</div>
+				</h1>
 		
 		<%@page import="java.util.List" %>		
 		<% if(l.getRole().equals("administrator")){ 
@@ -142,7 +143,8 @@ body {
 		%>
 			<br/><br/>
 			<div class="row">
-			  <div class="col-sm-3">
+			
+			  <!--<div class="col-sm-3">
 			    <div class="card text-white bg-primary mb-3" style="max-width: 20rem;">
 				  <div class="card-body">
 				    <h4 class="card-title">Doctors</h4>
@@ -176,6 +178,40 @@ body {
 				    <p class="card-text">Rs.<%=users_count.get(3) %></p>
 				  </div>
 				</div>
+			  </div>
+			  -->
+			  <div class="grid grid-cols-1 md:grid-cols-2 jutify-center w-full gap-8">
+			  
+				  <div class="relative flex py-2 px-4 flex-col bg-gradient-to-l from-purple-600 to-blue-600 w-full rounded-xl">
+				  	<h2 class="text-white text-2xl font-bold">DOCTORS</h2>
+				  	<p class="text-white font-mono font-semibold text-xl"><%=users_count.get(1) %></p>
+				  	
+				  	<svg class="absolute stroke-2 stroke-white/90 -rotate-12 right-4 -bottom-1 size-24" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-briefcase-medical"><path d="M12 11v4"/><path d="M14 13h-4"/><path d="M16 6V4a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2"/><path d="M18 6v14"/><path d="M6 6v14"/><rect width="20" height="14" x="2" y="6" rx="2"/></svg>
+				  </div>
+				  
+				   <div class="relative flex py-2 px-4 flex-col bg-gradient-to-l from-purple-600 to-blue-600 w-full rounded-xl">
+				  	<h2 class="text-white text-xl font-bold font-mono">EMPLOYEE</h2>
+				  	<p class="text-white"><%=users_count.get(2) %></p>
+				  	
+				 	<svg class="absolute stroke-2 stroke-white/90 -rotate-12 right-4 bottom-0 size-24" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-concierge-bell"><path d="M3 20a1 1 0 0 1-1-1v-1a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v1a1 1 0 0 1-1 1Z"/><path d="M20 16a8 8 0 1 0-16 0"/><path d="M12 4v4"/><path d="M10 4h4"/></svg>
+				</div>
+				  
+				  <div class="relative flex py-2 px-4 flex-col bg-gradient-to-l from-purple-600 to-blue-600 w-full rounded-xl">
+				  	<h2 class="text-white text-xl font-bold font-mono">PATIENTS</h2>
+				  	<p class="text-white"><%=users_count.get(0) %></p>
+				  	
+				<svg class="absolute stroke-2 stroke-white/90 -rotate-12 right-4 bottom-0 size-24" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-pill"><path d="m10.5 20.5 10-10a4.95 4.95 0 1 0-7-7l-10 10a4.95 4.95 0 1 0 7 7Z"/><path d="m8.5 8.5 7 7"/></svg>
+				 </div>
+				  
+				    <div class="relative flex py-2 px-4 flex-col bg-gradient-to-l from-purple-600 to-blue-600 w-full rounded-xl">
+				  	<h2 class="text-white text-xl font-bold font-mono">OPD FEE</h2>
+				  	<p class="text-white"><%=users_count.get(3) %></p>
+				  	
+				 <svg class="absolute stroke-2 stroke-white/90 -rotate-12 right-4 bottom-0 size-24" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-receipt-indian-rupee"><path d="M4 2v20l2-1 2 1 2-1 2 1 2-1 2 1 2-1 2 1V2l-2 1-2-1-2 1-2-1-2 1-2-1-2 1Z"/><path d="M8 7h8"/><path d="M12 17.5 8 15h1a4 4 0 0 0 0-8"/><path d="M8 11h8"/></svg>
+				 </div>
+				  
+				
+				  
 			  </div>
 		<%} %>
 		
