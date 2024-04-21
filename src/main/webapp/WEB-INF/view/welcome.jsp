@@ -67,17 +67,16 @@ body {
 					<h2 class="font-extrabold mb-2 ">SVSS</h2>
 					<span class="inline-block w-full text-white bg-purple-700 hover:bg-purple-800 font-medium rounded-md text-sm p-2.5 text-center my-1"><%= l.getRole().toUpperCase() %></span>
 				</div>
-			
-				
+					
 		<% if(!l.getId().equals("EMP100")){ %>
 				<a href="personalInfo.html">
-					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Personal Info
+					Personal Info
 				</a>
 		<%} %>
 		<% if(l.getRole().equals("administrator")){ %>
 			<div class="flex-grow text-xs mt-4">
 			    <a href="addEmployeeView.html" class="flex gap-x-2 inline-block text-slate-700 font-semibold hover:underline" style="font-size:16px;font-weight:600">
-			    	<span>Add Employee</span>
+			    	Add Employee
 			    </a>
 				<a href="searchEmployeeView.html" class="text-slate-700 font-semibold"  style="font-size:16px;font-weight:600">
 					Search Employee
@@ -99,31 +98,33 @@ body {
 				<a href="opdQueueView.html" class="text-slate-700 text-sm font-semibold">
 					OPD Queue
 				</a>
-				<a href="prescriptionQueueView.html"  class="text-slate-700 text-sm font-semibold">
+				<a href="prescriptionQueueView.html" class="text-slate-700" style="font-size:16px;font-weight:600">
 					<% String count=""+request.getAttribute("prescriptionsCount"); %>
 					Prescriptions 
-					<span class="badge badge-pill badge-danger"><%=count %></span>
+					<span class="w-4 h-3 p-1.5 mb-1.5 rounded bg-blue-500 text-white font-medium" style="font-size:10px"><%=count %></span>
 				</a>
 		</div>
 		<%} %>
 		
 		<% if(l.getRole().equals("doctor")){ %>
-				<a href="opdQueueD.html">
+			<div class="flex-grow text-xs mt-4">
+				<a href="opdQueueD.html" class="text-slate-700 font-semibold"  style="font-size:16px;font-weight:600">
 				OPD Queue
 				</a>
-				<a href="searchPatientView.html">
+				<a href="searchPatientView.html" class="text-slate-700 font-semibold"  style="font-size:16px;font-weight:600">
 					Search Patient
 				</a>
-				<a class="text-primary">
+				<a class="text-slate-700 font-semibold"  style="font-size:16px;font-weight:600">
 				Patient General Info
 				</a>
-				<a class="text-primary">
+				<a class="text-slate-700 font-semibold"  style="font-size:16px;font-weight:600">
 				History
 				</a>
-				<a class="text-primary">
+				<a class="text-slate-700 font-semibold"  style="font-size:16px;font-weight:600">
 				Observations &
 				Prescription
 				</a>
+			</div>
 		<%} %>
 		
 				<div class="p-2 flex flex-col font-medium text-slate-800 rounded-md bg-white border-blue-400 m-2">

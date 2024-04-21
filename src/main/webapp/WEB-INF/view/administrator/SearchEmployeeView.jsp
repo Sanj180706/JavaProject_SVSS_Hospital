@@ -52,13 +52,13 @@ body {
 
 </style>
 </head>
-<body>
+<body class="bg-slate-100">
 	
 	<%@ include file="../header.jsp" %>
 	
 	<div class="container">
 	<div class="row">
- <div class="col-sm-*">
+	<div class="col-sm-*">
 			<!-- sidenavbar -->
 			<%@page import="com.project.entity.Login" %>
 			<%@page import="org.springframework.web.servlet.ModelAndView" %>
@@ -73,19 +73,19 @@ body {
 				
 		<% if(!l.getId().equals("EMP100")){ %>
 				<a href="personalInfo.html">
-					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Personal Info
+					Personal Info
 				</a>
 		<%} %>
 		<% if(l.getRole().equals("administrator")){ %>
 			<div class="flex-grow text-xs mt-4">
-			    <a href="addEmployeeView.html" class="text-violet-800 flex gap-x-2 inline-block text-slate-700 font-semibold hover:underline" style="font-size:16px;font-weight:600">
+			    <a href="addEmployeeView.html" class="text-slate-700 flex gap-x-2 inline-block text-slate-700 font-semibold hover:underline" style="font-size:16px;font-weight:600">
 			    	<span>Add Employee</span>
 			    </a>
-				<a href="searchEmployeeView.html" class="text-slate-700 font-semibold"  style="font-size:16px;font-weight:600">
+				<a href="searchEmployeeView.html" class="text-slate-700 font-semibold"  style="color:black;font-size:16px;font-weight:600">
 					<span>Search Employee</span>
 				</a>
-				<a href="allEmployeesView.html" class="text-violet-800 font-semibold"  style="font-size:16px;font-weight:600">
-					> <span>All Employees</span>
+				<a href="allEmployeesView.html" class="text-slate-700 font-semibold"  style="font-size:16px;font-weight:600">
+					<span>All Employees</span>
 				</a>
 			</div>
 		<%} %>
@@ -101,10 +101,10 @@ body {
 				<a href="opdQueueView.html" class="text-slate-700 text-sm font-semibold">
 					OPD Queue
 				</a>
-				<a href="prescriptionQueueView.html"  class="text-slate-700 text-sm font-semibold">
+				<a href="prescriptionQueueView.html" class="text-slate-700" style="font-size:16px;font-weight:600">
 					<% String count=""+request.getAttribute("prescriptionsCount"); %>
 					Prescriptions 
-					<span class="badge badge-pill badge-danger"><%=count %></span>
+					<span class="w-4 h-3 p-1.5 mb-1.5 rounded bg-blue-500 text-white font-medium" style="font-size:10px"><%=count %></span>
 				</a>
 		</div>
 		<%} %>
@@ -123,25 +123,24 @@ body {
 				History
 				</a>
 				<a class="text-primary">
-				Observations &
-				Prescription
+				Observations &  Prescription
 				</a>
 		<%} %>
 		
 				<div class="p-2 flex flex-col font-medium text-slate-800 rounded-md bg-white border-blue-400 m-2">
 					<span><%= l.getUsername() %></span>
 					<span><%= l.getId() %></span>
-					<a href="editView.html" class="text-right">
+					<!--<a href="editView.html" class="text-right">
 						<span  class="text-violet-900 text-sm no-underline font-medium">EDIT</span>
-					</a>
+					</a>-->
 				</div>
 			</div>
 	    </div>
 	    
 	   <div class="col-sm-12">
 	      <!-- display window -->
-			<div class="main">
-			<h2 class="font-extrabold text-3xl mb-4">Search Existing Employee</h2>
+			<div class="main"><br/>
+			<h2 class="font-extrabold text-3xl">Search Existing Employee</h2>
 			
 			 		<%	
 					try{

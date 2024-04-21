@@ -22,7 +22,7 @@
 	}
 </style>	  
 </head>
-<body>
+<body class="bg-slate-100">
 	<div class="container"><br/>
 		<%@ page import="com.project.entity.Login" %>
 		<% Login l=(Login)session.getAttribute("userInfo");	 %>

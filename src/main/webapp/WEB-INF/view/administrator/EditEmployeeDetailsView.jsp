@@ -50,52 +50,59 @@ body {
 
 </style>
 </head>
-<body>
+<body ascsl="bg-slate-100">
 	
 	<%@ include file="../header.jsp" %>
 	
 	<div class="container">
-	<div class="row">
-	    <div class="col-sm-*">
-			<!-- sidenavbar -->
-			<%@page import="com.project.entity.Login" %>
-			<%@page import="org.springframework.web.servlet.ModelAndView" %>
-			<% Login l=(Login)session.getAttribute("userInfo");	 %>
-			<div class="sidenav">
-				<a><br/><br/>
-				<div style="background-color: rgba(255,0,0,0.4);">&nbsp;&nbsp;&nbsp;
-					<span class="badge badge-pill badge-warning">&nbsp;&nbsp;<%= l.getRole().toUpperCase() %>&nbsp;&nbsp;</span><br/><br/>
-					<b>Username:</b> <%= l.getUsername() %><br/><br/>
-					<b>Id:</b> <%= l.getId() %><br/>
-					<a href="editView.html">
-			    	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="text-decoration:underline; color:green;">edit...</span>
-			    	</a>
-				</div>
-				</a><br/>
+		<div class="row">
+	
+	    	<div class="col-sm-*">
+				<!-- sidenavbar -->
+				<%@page import="com.project.entity.Login" %>
+				<%@page import="org.springframework.web.servlet.ModelAndView" %>
+				<% Login l=(Login)session.getAttribute("userInfo");	 %>
+				<div class="sidenav border border-slate-700 flex flex-col justify-between">
 				
-		<% if(!l.getId().equals("EMP100")){ %>
-				<a href="personalInfo.html">
-					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Personal Info
-				</a>
-		<%} %>
-		<% if(l.getRole().equals("administrator")){ %>
-			    <a href="addEmployeeView.html">
-			    	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Add Employee
-			    </a>
-				<a href="searchEmployeeView.html">
-					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Search Employee
-				</a>
-				<a href="allEmployeesView.html">
-					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;All Employees
-				</a>
-		<%} %>
+					<div class="mx-2">
+						<h2 class="font-extrabold mb-2 ">SVSS</h2>
+						<span class="inline-block w-full text-white bg-purple-700 hover:bg-purple-800 font-medium rounded-md text-sm p-2.5 text-center my-1"><%= l.getRole().toUpperCase() %></span>
+					</div>
+			
+					<% if(!l.getId().equals("EMP100")){ %>
+						<a href="personalInfo.html">
+							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Personal Info
+						</a>
+					<%} %>
+					<% if(l.getRole().equals("administrator")){ %>
+					<div class="flex-grow text-xs mt-4">
+			    		<a href="addEmployeeView.html" class="flex gap-x-2 inline-block text-slate-700 font-semibold hover:underline" style="font-size:16px;font-weight:600">
+			    			Add Employee
+			    		</a>
+						<a href="searchEmployeeView.html" class="text-slate-700 font-semibold"  style="font-size:16px;font-weight:600">
+							Search Employee
+						</a>
+						<a href="allEmployeesView.html" class="text-slate-700 font-semibold"  style="font-size:16px;font-weight:600">
+							All Employees
+						</a>
+					</div>
+				<%} %>
+				<div class="p-2 flex flex-col font-medium text-slate-800 rounded-md bg-white border-blue-400 m-2">
+					<span><%= l.getUsername() %></span>
+					<span><%= l.getId() %></span>
+					<!--<a href="editView.html" class="text-right">
+						<span  class="text-violet-900 text-sm no-underline font-medium">EDIT</span>
+					</a>-->
+				</div>
 			</div>
 	    </div>
+	    </div>
+	    
 	    
 		<div class="col-sm-12">
 		      <!-- display window -->
-				<div class="main"><br/><br/>
-				<h1>Edit Employee Details</h1><br/>
+						<div class="main"><br/>
+				<h2 class="font-extrabold text-3xl mb-4">Edit Employee Details</h2>
 					<form action="editEmployee.html" method="post" >
 					<%-- 	fields with disabled attribute are not submitted but readonly r submitted --%> 
 					

@@ -16,26 +16,15 @@
 </head>
 <body>
 <!-- top navbar -->
-	<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
-	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-	  <h1><span class="text-light font-bold">SVSS Hospital</span></h1>
-	  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
-	    <span class="navbar-toggler-icon"></span>
-	  </button>
+	<nav class="ml-[250px] navbar-dark bg-primary flex justify-between p-2 items-center">
 	
-	  <div class="collapse navbar-collapse" id="navbarColor01">
-	    <ul class="navbar-nav mr-auto">
-	      <li class="nav-item active">
-	        <a class="nav-link" href="#"> <span class="sr-only"></span></a>
-	      </li>
-	    </ul>
-	    <form action="logout.html" class="form-inline my-2 my-lg-0">
-	      <button type="submit" class="btn btn-danger">Log Out</button>
-	    </form>
-	  </div>
+	  <h1 class="text-light font-bold">SVSS Hospital</h1>
+	  <form action="logout.html" class="flex justify-end mr-2">
+	  	<button class="px-2 rounded bg-white text-indigo-700 font-medium">
+	  		Logout
+	  	</button>
+	  </form>
+	
 	</nav>
 </body>
 </html>

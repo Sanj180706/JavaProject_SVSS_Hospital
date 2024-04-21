@@ -76,20 +76,20 @@ body {
 		<%} %>
 		<% if(l.getRole().equals("administrator")){ %>
 			<div class="flex-grow text-xs mt-4">
-			    <a href="addEmployeeView.html" class="text-violet-800 flex gap-x-2 inline-block text-slate-700 font-semibold hover:underline" style="font-size:16px;font-weight:600">
-			    	> <span>Add Employee</span>
+			    <a href="addEmployeeView.html" class="text-slate-700" style="color:black;font-size:16px;font-weight:600">
+			    	Add Employee
 			    </a>
-				<a href="searchEmployeeView.html" class="text-slate-700 font-semibold"  style="font-size:16px;font-weight:600">
+				<a href="searchEmployeeView.html" class="text-slate-700 font-semibold" style="font-size:16px;font-weight:600">
 					Search Employee
 				</a>
-				<a href="allEmployeesView.html" class="text-slate-700 font-semibold"  style="font-size:16px;font-weight:600">
+				<a href="allEmployeesView.html" class="text-slate-700 font-semibold" style="font-size:16px;font-weight:600">
 					All Employees
 				</a>
 			</div>
 		<%} %>
 		
 		<% if(l.getRole().equals("receptionist")){ %>
-		<div class="flex-grow">
+			<div class="flex-grow text-xs mt-4">
 				<a href="addPatientView.html" class="text-slate-700 text-sm font-semibold">
 					Add Patient
 				</a>
@@ -102,36 +102,28 @@ body {
 				<a href="prescriptionQueueView.html"  class="text-slate-700 text-sm font-semibold">
 					<% String count=""+request.getAttribute("prescriptionsCount"); %>
 					Prescriptions 
-					<span class="badge badge-pill badge-danger"><%=count %></span>
+					<span class=" bg-green-400"><%=count %></span>
 				</a>
 		</div>
 		<%} %>
 		
 		<% if(l.getRole().equals("doctor")){ %>
-				<a href="opdQueueD.html">
+			<div class="flex-grow text-xs mt-4">
+				<a href="opdQueueD.html" class="text-slate-700 text-sm font-semibold">
 				OPD Queue
 				</a>
-				<a href="searchPatientView.html">
+				<a href="searchPatientView.html" class="text-slate-700 text-sm font-semibold">
 					Search Patient
 				</a>
-				<a class="text-primary">
-				Patient General Info
-				</a>
-				<a class="text-primary">
-				History
-				</a>
-				<a class="text-primary">
-				Observations &
-				Prescription
-				</a>
+				</div>
 		<%} %>
 		
 				<div class="p-2 flex flex-col font-medium text-slate-800 rounded-md bg-white border-blue-400 m-2">
 					<span><%= l.getUsername() %></span>
 					<span><%= l.getId() %></span>
-					<a href="editView.html" class="text-right">
+					<!--<a href="editView.html" class="text-right">
 						<span  class="text-violet-900 text-sm no-underline font-medium">EDIT</span>
-					</a>
+					</a>-->
 				</div>
 			</div>
 	    </div>
@@ -140,7 +132,7 @@ body {
 	    <div class="col-sm-12">
 	      <!-- display window -->
 			<div class="main"><br/>
-				<h2 class="font-extrabold text-3xl">Add New Employee</h2>
+				<h2 class="font-extrabold text-3xl mb-4">Add New Employee</h2>
 		
 				<div class="container grey">
 				<form name="addEmp" action="addEmployee.html" method="post" >

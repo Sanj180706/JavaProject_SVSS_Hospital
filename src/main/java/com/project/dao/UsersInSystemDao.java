@@ -1,4 +1,4 @@
-package com.project.dao;
+/*package com.project.dao;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -73,4 +73,85 @@ public class UsersInSystemDao
 		END
 	 * 
 	 */
+//}
+
+
+
+
+package com.project.dao;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.persistence.ParameterMode;
+import javax.persistence.StoredProcedureQuery;
+
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+import org.springframework.transaction.annotation.Transactional;
+
+import com.project.entity.Login;
+
+@Component
+public class UsersInSystemDao implements Cloneable
+{
+    @Autowired
+    private SessionFactory sf;
+
+    @Autowired
+    LoginDao infoLog;
+
+    @Transactional
+    public List<Integer> getUsersInSystem()
+    {
+        try 
+        {
+            infoLog.logActivities("in UsersInSystemDao-getUsersInSystem");
+                            
+            Session session= sf.getCurrentSession();
+            
+            StoredProcedureQuery procedure = session.createStoredProcedureQuery("users_in_system");
+            registerParameters(procedure, "doctors", "patients", "employees", "total_opd_income");
+            
+            procedure.execute();
+            List<Integer> users_count = extractOutputParameters(procedure, "doctors", "patients", "employees", "total_opd_income");
+            return users_count;
+            
+        }
+        catch(Exception e)
+        {
+            infoLog.logActivities("in UsersInSystemDao-getUsersInSystem: "+e);
+            return null;
+        }
+    }
+
+    private void registerParameters(StoredProcedureQuery procedure, String... parameterNames) {
+        for (String parameterName : parameterNames) {
+            procedure.registerStoredProcedureParameter(parameterName, Integer.class, ParameterMode.OUT);
+        }
+    }
+
+    private List<Integer> extractOutputParameters(StoredProcedureQuery procedure, String... parameterNames) {
+        List<Integer> parameters = new ArrayList<>();
+        for (String parameterName : parameterNames) {
+            Integer parameterValue = (Integer) procedure.getOutputParameterValue(parameterName);
+            parameters.add(parameterValue);
+        }
+        return parameters;
+    }
+
+    // Clone method to create a new instance
+    @Override
+    public UsersInSystemDao clone() {
+        try {
+            return (UsersInSystemDao) super.clone();
+        } catch (CloneNotSupportedException e) {
+            // Handle the exception appropriately
+            return null;
+        }
+    }
 }
+
+
