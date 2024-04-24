@@ -62,7 +62,7 @@
     
     
     
-    <p style="letter-spacing: 4px;">Healthcare for free for me</p>
+    <p style="letter-spacing: 4px;">Healthcare for free for all</p>
     <br/><br/><br/>
     <form action="login.html" method="post">
         <button type="submit" class="btn btn-primary">&nbsp;&nbsp; Login &nbsp;&nbsp;</button>

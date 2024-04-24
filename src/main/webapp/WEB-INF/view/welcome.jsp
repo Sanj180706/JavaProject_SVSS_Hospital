@@ -179,7 +179,7 @@ body {
 				 </div>
 				  
 				    <div class="shadow relative flex py-2 px-4 flex-col bg-gradient-to-l from-purple-600 to-blue-600 w-full rounded-xl">
-				  	<h2 class="text-white text-xl font-bold">OPD FEE</h2>
+				  	<h2 class="text-white text-xl font-bold">Operation FEE</h2>
 				  	<p class="text-white"><%=users_count.get(3) %></p>
 				  	
 				 <svg class="absolute stroke-2 stroke-white/90 -rotate-12 right-4 bottom-0 size-24" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-receipt-indian-rupee"><path d="M4 2v20l2-1 2 1 2-1 2 1 2-1 2 1 2-1 2 1V2l-2 1-2-1-2 1-2-1-2 1-2-1-2 1Z"/><path d="M8 7h8"/><path d="M12 17.5 8 15h1a4 4 0 0 0 0-8"/><path d="M8 11h8"/></svg>

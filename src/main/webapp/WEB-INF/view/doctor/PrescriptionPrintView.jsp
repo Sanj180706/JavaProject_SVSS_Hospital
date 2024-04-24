@@ -137,8 +137,7 @@
 				<small>*or other cheaper generic medicines of same contents, as per choice of patients. No compulsion of particular brand.</small>
 				<hr/>
 				Our Centers:<br/>
-			    1. Saru Hospital, Mumbai Naka, Matoshree Nagar, Nashik, Maharashtra 422002 |
-			    2. NIIMS Multispeciality Hospital, Gangapur road, Thatte Nagar, Nashik, Maharashtra 422005<br/>
+			    2. SVSS Hospital, Bengaluru, Karnataka<br/>
 			    Mobile No. 8087030000 | Phone No. 0253-2575151 | E-mail: drsachinkdeore@gmail.com	
 			</div>	
 	

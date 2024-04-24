@@ -93,7 +93,7 @@
     <form action="dashboard.html" method="post" autocomplete="off">
 		<p style="color: black; font-weight: bold">Welcome to SVSS</h2>
 		<h2>Sign In</h2>
-		<p>Please fill in this form to access your account!</p>
+		<p>Please fill in this form to access your account</p>
 		<hr>
 		
 		<div class="form-group" style="color: red;">
